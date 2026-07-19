@@ -83,7 +83,7 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0; }
     .facts { display: flex; flex-wrap: wrap; gap: .7rem; padding: 0; list-style: none; }
     .facts li { padding: .5rem .8rem; border: 1px solid rgb(8 43 98 / 16%); border-radius: 999px; color: var(--navy); background: var(--paper); font-size: .9rem; font-weight: 750; }
-    .poster { overflow: hidden; border: 1px solid rgb(8 43 98 / 12%); border-radius: var(--radius); box-shadow: var(--shadow); transform: rotate(1.5deg); }
+    .poster { width: 100%; height: auto; object-fit: contain; overflow: hidden; border: 1px solid rgb(8 43 98 / 12%); border-radius: var(--radius); box-shadow: var(--shadow); transform: rotate(1.5deg); }
 
     section { padding: clamp(4.5rem, 8vw, 7rem) 0; }
     .about { background: var(--navy); color: #dce9f7; }
@@ -135,7 +135,7 @@
     @media (max-width: 800px) {
       nav > a:not(.button) { display: none; }
       .hero-grid, .about-grid, .sponsor-box { grid-template-columns: 1fr; }
-      .poster { max-width: 600px; transform: none; }
+      .poster { width: calc(100% - 1rem); max-width: 600px; margin-inline: auto; transform: none; }
       .partner-card { grid-template-columns: 1fr; min-height: 0; }
       .partner-card img { aspect-ratio: 16 / 10; padding: 2.5rem; }
       .section-head { display: block; }
