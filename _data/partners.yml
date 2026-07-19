@@ -1,0 +1,26 @@
+# Copy one block to add a community partner. Images belong in the Assets folder.
+- name: BangPypers
+  role: Host community
+  description: Bengaluru's Python user group, bringing developers together through meetups, workshops and open-source collaboration.
+  image: /Assets/bangpypers-square-large.png
+  url: https://bangalore.pythonindia.org/
+
+- name: PyData Bengaluru
+  role: Community partner
+  description: Data analysis and scientific computing across Python, R and Julia.
+  image: /Assets/logos/pydata-bengaluru.webp
+  logo_background: "#ffffff"
+  url: https://www.meetup.com/pydata-bangalore/
+
+- name: Point Blank
+  role: Community partner
+  description: A student-run community building and contributing across open source.
+  image: /Assets/logos/point-blank.svg
+  logo_background: "#082b62"
+  url: https://www.pointblank.club/
+
+- name: Django India
+  role: Community partner
+  description: Developers learning, collaborating and contributing across the Django ecosystem.
+  image: /Assets/django-india-logo.png
+  url: https://www.djangoindia.org/
