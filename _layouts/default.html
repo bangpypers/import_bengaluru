@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.data.event.description }}">
+  <meta name="theme-color" content="#082b62">
+  <link rel="icon" href="{{ '/Assets/logos/bangpypers.svg' | relative_url }}" type="image/svg+xml">
+  <title>{{ site.data.event.name }} — {{ site.data.event.date }}</title>
+  <style>
+    :root {
+      --navy: #082b62;
+      --blue: #0b5fa5;
+      --orange: #f56522;
+      --yellow: #ffb517;
+      --cream: #fffaf1;
+      --paper: #fffdf8;
+      --ink: #102a43;
+      --muted: #597086;
+      --line: #d8e0e8;
+      --shadow: 0 18px 55px rgb(8 43 98 / 10%);
+      --radius: 1.5rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.08; }
+    h2 { margin-bottom: .75rem; font-size: clamp(2rem, 5vw, 3.8rem); letter-spacing: -.045em; }
+    h3 { font-size: 1.25rem; }
+    .wrap { width: min(1160px, calc(100% - 2rem)); margin-inline: auto; }
+    .eyebrow { margin-bottom: .5rem; color: var(--orange); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .lead { max-width: 720px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .button {
+      display: inline-flex;
+      min-height: 3.2rem;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem 1.25rem;
+      border: 2px solid var(--navy);
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgb(8 43 98 / 20%); }
+    .button:focus-visible, nav a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .button.secondary { background: transparent; color: var(--navy); }
+
+    header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgb(8 43 98 / 10%);
+      background: rgb(255 250 241 / 92%);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 4.7rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { color: var(--navy); font-size: 1.2rem; font-weight: 900; text-decoration: none; letter-spacing: -.04em; }
+    .brand span { color: var(--orange); }
+    nav { display: flex; align-items: center; gap: clamp(.75rem, 2vw, 1.5rem); }
+    nav a { color: var(--navy); font-size: .92rem; font-weight: 700; text-decoration: none; }
+    nav .button { min-height: 2.6rem; padding: .5rem 1rem; color: white; }
+
+    .hero { position: relative; overflow: hidden; padding: clamp(4rem, 8vw, 8rem) 0 5rem; }
+    .hero::before, .hero::after { position: absolute; border-radius: 50%; content: ""; pointer-events: none; }
+    .hero::before { width: 34rem; height: 34rem; top: -15rem; right: -12rem; background: rgb(255 181 23 / 20%); }
+    .hero::after { width: 12rem; height: 12rem; bottom: 2rem; left: -7rem; background: rgb(245 101 34 / 10%); }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(2.5rem, 6vw, 5rem); }
+    h1 { margin-bottom: 1.25rem; font: 800 clamp(4rem, 10vw, 8rem)/.78 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.09em; }
+    h1 span { display: block; color: var(--orange); font-family: Georgia, serif; font-weight: 700; letter-spacing: -.07em; }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: clamp(1.1rem, 2.3vw, 1.35rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0; }
+    .facts { display: flex; flex-wrap: wrap; gap: .7rem; padding: 0; list-style: none; }
+    .facts li { padding: .5rem .8rem; border: 1px solid rgb(8 43 98 / 16%); border-radius: 999px; color: var(--navy); background: var(--paper); font-size: .9rem; font-weight: 750; }
+    .poster { overflow: hidden; border: 1px solid rgb(8 43 98 / 12%); border-radius: var(--radius); box-shadow: var(--shadow); transform: rotate(1.5deg); }
+
+    section { padding: clamp(4.5rem, 8vw, 7rem) 0; }
+    .about { background: var(--navy); color: #dce9f7; }
+    .about h2 { color: white; }
+    .about .eyebrow { color: var(--yellow); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 6rem); align-items: start; }
+    .principles { display: grid; gap: 1rem; }
+    .principle { padding: 1.25rem; border: 1px solid rgb(255 255 255 / 14%); border-radius: 1rem; background: rgb(255 255 255 / 5%); }
+    .principle strong { display: block; margin-bottom: .25rem; color: var(--yellow); }
+
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
+    .partner-carousel { position: relative; }
+    .partner-card { display: grid; grid-template-columns: minmax(18rem, .9fr) 1.1fr; overflow: hidden; min-height: 30rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: var(--shadow); text-decoration: none; }
+    .partner-card[hidden] { display: none; }
+    .partner-card img { width: 100%; height: 100%; padding: clamp(2.5rem, 7vw, 6rem); object-fit: contain; background: white; }
+    .partner-card div { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 6vw, 5rem); }
+    .partner-card h3 { margin: .4rem 0 1rem; font-size: clamp(2.2rem, 5vw, 4.5rem); letter-spacing: -.05em; }
+    .partner-card p { max-width: 30rem; margin-bottom: 1.5rem; color: var(--muted); font-size: 1.1rem; }
+    .partner-role { color: var(--orange); font-size: .76rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .partner-link { color: var(--blue); font-weight: 800; }
+    .carousel-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .carousel-tabs button { padding: .6rem .9rem; border: 1px solid rgb(8 43 98 / 20%); border-radius: 999px; background: transparent; color: var(--navy); cursor: pointer; font: inherit; font-size: .85rem; font-weight: 750; }
+    .carousel-tabs button[aria-selected="true"] { border-color: var(--navy); background: var(--navy); color: white; }
+    .carousel-tabs button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+    .partner-contact { margin-top: 1.5rem; }
+
+    .agenda { background: #f1f6fa; }
+    .timeline { max-width: 850px; margin-top: 2.5rem; }
+    .slot { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid #cbd8e3; }
+    .slot time { color: var(--orange); font-weight: 850; }
+    .slot h3 { margin-bottom: .25rem; }
+    .slot p { margin-bottom: 0; color: var(--muted); }
+    .tag { display: inline-block; padding: .25rem .65rem; border-radius: 999px; background: #e4edf5; color: var(--navy); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
+
+    .sponsor-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius); background: var(--yellow); box-shadow: var(--shadow); }
+    .sponsor-box h2 { margin-bottom: .5rem; }
+    .sponsor-box p { max-width: 690px; margin-bottom: 0; color: #563900; }
+
+    .cta { text-align: center; }
+    .cta-card { padding: clamp(3rem, 8vw, 6rem) 1.5rem; border-radius: var(--radius); background: var(--navy); color: white; }
+    .cta-card h2 { color: white; }
+    .cta-card p { max-width: 620px; margin: 0 auto 1.5rem; color: #c8d9eb; }
+    .cta-card .button { border-color: var(--yellow); background: var(--yellow); color: var(--navy); }
+
+    footer { padding: 2rem 0; border-top: 1px solid rgb(8 43 98 / 12%); }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .9rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    @media (max-width: 800px) {
+      nav > a:not(.button) { display: none; }
+      .hero-grid, .about-grid, .sponsor-box { grid-template-columns: 1fr; }
+      .poster { max-width: 600px; transform: none; }
+      .partner-card { grid-template-columns: 1fr; min-height: 0; }
+      .partner-card img { aspect-ratio: 16 / 10; padding: 2.5rem; }
+      .section-head { display: block; }
+      .slot { grid-template-columns: 1fr; gap: .25rem; }
+      .sponsor-box .button { justify-self: start; }
+      .footer-grid { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      h1 { font-size: clamp(3.25rem, 19vw, 5rem); }
+      .partner-card { display: block; }
+      .brand { font-size: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="import bengaluru home">import_<span>bengaluru</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#communities">Communities</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="{{ site.data.event.cfp }}">Submit a talk</a>
+        <a class="button" href="{{ site.data.event.rsvp }}">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">{{ site.data.event.presenter }} presents · {{ site.data.event.with }}</p>
+          <h1>import_<span>bengaluru</span></h1>
+          <p class="hero-copy">{{ site.data.event.intro }}</p>
+          <div class="hero-actions">
+            <a class="button" href="{{ site.data.event.rsvp }}">Reserve your spot →</a>
+            <a class="button secondary" href="{{ site.data.event.cfp }}">Submit a talk</a>
+            <a class="button secondary" href="#about">Explore the event</a>
+          </div>
+          <ul class="facts" aria-label="Event details">
+            <li>{{ site.data.event.date }}</li>
+            <li>{{ site.data.event.time }}</li>
+            <li>{{ site.data.event.location }}</li>
+          </ul>
+        </div>
+        <img class="poster" src="{{ site.data.event.hero_image | relative_url }}" alt="import bengaluru event poster featuring Bengaluru landmarks">
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div>
+          <p class="eyebrow">Why we're gathering</p>
+          <h2>Different ecosystems. Shared learnings.</h2>
+          <div class="lead">{{ content }}</div>
+        </div>
+        <div class="principles">
+          <div class="principle"><strong>Community-led</strong>Each participating community brings a session from its own ecosystem.</div>
+          <div class="principle"><strong>Practical</strong>Expect real experiences, lessons and work—not product pitches.</div>
+          <div class="principle"><strong>Open to everyone</strong>Beginners, maintainers, engineers, researchers and the Python-curious are welcome.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="communities">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Community partners</p>
+            <h2>Many communities.<br>Stronger together.</h2>
+          </div>
+          <p class="lead">Meet the groups shaping Python and open source in Bengaluru. More partners will be announced soon.</p>
+        </div>
+        <div class="partner-carousel" aria-label="Community partners">
+          {% for partner in site.data.partners %}
+          <a class="partner-card" href="{{ partner.url }}" {% unless forloop.first %}hidden{% endunless %} data-partner-slide>
+            <img src="{{ partner.image | relative_url }}" alt="{{ partner.name }} logo" loading="lazy" style="background: {{ partner.logo_background | default: 'white' }}">
+            <div><span class="partner-role">{{ partner.role }}</span><h3>{{ partner.name }}</h3><p>{{ partner.description }}</p><span class="partner-link">Visit community →</span></div>
+          </a>
+          {% endfor %}
+          <div class="carousel-tabs" role="tablist" aria-label="Choose a community">
+            {% for partner in site.data.partners %}
+            <button type="button" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-partner-tab>{{ partner.name }}</button>
+            {% endfor %}
+          </div>
+          <a class="button secondary partner-contact" href="mailto:{{ site.data.event.contact_email }}?subject=Community%20partner%20for%20import_%20bengaluru">Become a community partner</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="agenda" id="agenda">
+      <div class="wrap">
+        <p class="eyebrow">Agenda</p>
+        <h2>A full day across<br>the Python landscape.</h2>
+        <p class="lead">Speaker and session details are being finalised. Here is the shape of the day; check back as community sessions are announced.</p>
+        <div class="timeline">
+          {% for item in site.data.agenda %}
+          <div class="slot"><time>{{ item.time }}</time><div>{% if item.tba %}<span class="tag">To be announced</span>{% endif %}<h3>{{ item.title }}</h3><p>{{ item.description }}</p></div></div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="wrap sponsor-box">
+        <div>
+          <p class="eyebrow">Sponsors</p>
+          <h2>Help Bengaluru's Python communities meet.</h2>
+          <p>{{ site.data.sponsors.message }}</p>
+        </div>
+        <a class="button secondary" href="mailto:{{ site.data.event.contact_email }}?subject=Supporting%20import_%20bengaluru">Talk to the organisers</a>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-card">
+        <p class="eyebrow">{{ site.data.event.date }} · {{ site.data.event.location }}</p>
+        <h2>Bring your curiosity.<br>Leave with a bigger community.</h2>
+        <p>Join developers, maintainers, data practitioners, researchers and open-source contributors from across the city.</p>
+        <a class="button" href="{{ site.data.event.rsvp }}">RSVP on Luma →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <span>Hosted by <strong>BangPypers</strong> · Bangalore Python User Group</span>
+      <div class="footer-links">
+        <a href="https://bangalore.pythonindia.org/">Website</a>
+        <a href="https://www.linkedin.com/company/bangpypers">LinkedIn</a>
+        <a href="https://x.com/__bangpypers__">X</a>
+        <a href="https://discord.gg/YkvsBBEZgt">Discord</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const carousel = document.querySelector('.partner-carousel');
+    const slides = [...document.querySelectorAll('[data-partner-slide]')];
+    const tabs = [...document.querySelectorAll('[data-partner-tab]')];
+    let current = 0;
+    let timer;
+
+    function showPartner(index) {
+      current = index;
+      slides.forEach((slide, i) => slide.hidden = i !== index);
+      tabs.forEach((tab, i) => tab.setAttribute('aria-selected', i === index));
+    }
+
+    function startCarousel() {
+      clearInterval(timer);
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timer = setInterval(() => showPartner((current + 1) % slides.length), 5000);
+      }
+    }
+
+    tabs.forEach((tab, index) => tab.addEventListener('click', () => {
+      showPartner(index);
+      startCarousel();
+    }));
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', startCarousel);
+    carousel.addEventListener('focusin', () => clearInterval(timer));
+    carousel.addEventListener('focusout', startCarousel);
+    startCarousel();
+  </script>
+</body>
+</html>

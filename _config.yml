@@ -1,0 +1,8 @@
+title: import_ bengaluru
+url: "https://bangpypers.github.io"
+baseurl: "/import_bengaluru"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - test_site.rb
