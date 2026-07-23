@@ -24,3 +24,9 @@
   description: Developers learning, collaborating and contributing across the Django ecosystem.
   image: /Assets/django-india-logo.png
   url: https://www.djangoindia.org/
+
+- name: Bangalore Apache Airflow® Meetup Group
+  role: Community partner
+  description: Apache Airflow's Bangalore Meetup group brings developers and data engineers together through meetups and open-source collaboration focused on Apache Airflow and the broader data orchestration ecosystem.
+  image: /Assets/logos/AirflowLogo.png
+  url: https://www.meetup.com/bangalore-apache-airflow-meetup/
