@@ -30,3 +30,10 @@
   description: Apache Airflow's Bangalore Meetup group brings developers and data engineers together through meetups and open-source collaboration focused on Apache Airflow and the broader data orchestration ecosystem.
   image: /Assets/logos/AirflowLogo.png
   url: https://www.meetup.com/bangalore-apache-airflow-meetup/
+
+- name: PyTorch India
+  role: Community partner
+  description: A community bringing together PyTorch users, researchers and machine learning practitioners across India to learn, collaborate and contribute to open-source AI.
+  image: /Assets/logos/pytorch-in.png
+  logo_background: "#ffffff"
+  url: https://www.meetup.com/pytorch-bengaluru/
