@@ -1,0 +1,19 @@
+---
+layout: page
+title: Code of Conduct
+---
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Community</p>
+    <h1>{{ site.data.event.coc.title }}</h1>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="wrap prose">
+    {% for paragraph in site.data.event.coc.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+  </div>
+</section>
