@@ -1,0 +1,41 @@
+---
+layout: page
+title: Volunteers
+---
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Team</p>
+    <h1>Volunteers</h1>
+    <p class="page-lead">The people helping bring {{ site.data.event.name }} together.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="wrap">
+    <div class="volunteer-grid">
+      {% for volunteer in site.data.event.volunteers %}
+      <article class="volunteer-card">
+        <img
+          class="volunteer-avatar"
+          src="https://github.com/{{ volunteer.github_username }}.png"
+          alt="{{ volunteer.name }}"
+          width="120"
+          height="120"
+          loading="lazy"
+        >
+        <h2 class="volunteer-name">{{ volunteer.name }}</h2>
+        <div class="volunteer-links">
+          <a href="https://github.com/{{ volunteer.github_username }}" rel="noopener noreferrer">GitHub</a>
+          {% if volunteer.twitter_username %}
+          <a href="https://x.com/{{ volunteer.twitter_username }}" rel="noopener noreferrer">X</a>
+          {% endif %}
+          {% if volunteer.linkedin_username %}
+          <a href="https://www.linkedin.com/in/{{ volunteer.linkedin_username }}" rel="noopener noreferrer">LinkedIn</a>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
