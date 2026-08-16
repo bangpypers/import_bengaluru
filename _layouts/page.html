@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.data.event.description }}">
+  <meta name="theme-color" content="#082b62">
+  <link rel="icon" href="{{ '/Assets/logos/bangpypers.svg' | relative_url }}" type="image/svg+xml">
+  <title>{{ page.title }} — {{ site.data.event.name }}</title>
+  <style>
+    :root {
+      --navy: #082b62;
+      --blue: #0b5fa5;
+      --orange: #f56522;
+      --yellow: #ffb517;
+      --cream: #fffaf1;
+      --paper: #fffdf8;
+      --ink: #102a43;
+      --muted: #597086;
+      --line: #d8e0e8;
+      --shadow: 0 18px 55px rgb(8 43 98 / 10%);
+      --radius: 1.5rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.08; }
+    .wrap { width: min(1160px, calc(100% - 2rem)); margin-inline: auto; }
+    .eyebrow { margin-bottom: .5rem; color: var(--orange); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .button {
+      display: inline-flex;
+      min-height: 3.2rem;
+      align-items: center;
+      justify-content: center;
+      padding: .8rem 1.25rem;
+      border: 2px solid var(--navy);
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgb(8 43 98 / 20%); }
+    .button:focus-visible, nav a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .button.secondary { background: transparent; color: var(--navy); }
+
+    header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgb(8 43 98 / 10%);
+      background: rgb(255 250 241 / 92%);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 4.7rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { color: var(--navy); font-size: 1.2rem; font-weight: 900; text-decoration: none; letter-spacing: -.04em; }
+    .brand span { color: var(--orange); }
+    nav { display: flex; align-items: center; gap: clamp(.75rem, 2vw, 1.5rem); }
+    nav a { color: var(--navy); font-size: .92rem; font-weight: 700; text-decoration: none; }
+    nav .button { min-height: 2.6rem; padding: .5rem 1rem; color: white; }
+
+    .page-hero { padding: clamp(3rem, 6vw, 5rem) 0 1.5rem; }
+    .page-hero h1 { margin-bottom: 0; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.04em; }
+    .page-content { padding: 0 0 clamp(4rem, 8vw, 6rem); }
+    .page-content .prose { max-width: 720px; color: var(--muted); font-size: 1.05rem; }
+    .page-content .prose p { margin-bottom: 1.25rem; }
+    .page-lead { max-width: 720px; margin: .75rem 0 0; color: var(--muted); font-size: 1.1rem; }
+    .volunteer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .volunteer-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      padding: 1.75rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .volunteer-avatar {
+      width: 7.5rem;
+      height: 7.5rem;
+      border: 3px solid rgb(8 43 98 / 10%);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .volunteer-name { margin: 0; font-size: 1.2rem; }
+    .volunteer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .volunteer-links a { color: var(--blue); font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .volunteer-links a:hover { text-decoration: underline; }
+
+    footer { padding: 2rem 0; border-top: 1px solid rgb(8 43 98 / 12%); }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .9rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    @media (max-width: 800px) {
+      nav > a:not(.button) { display: none; }
+      .footer-grid { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .brand { font-size: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="import bengaluru home">import_<span>bengaluru</span></a>
+      <nav aria-label="Main navigation">
+        <a href="{{ '/' | relative_url }}#about">About</a>
+        <a href="{{ '/' | relative_url }}#communities">Communities</a>
+        <a href="{{ '/' | relative_url }}#agenda">Agenda</a>
+        <a href="{{ '/' | relative_url }}#sponsors">Sponsors</a>
+        <a href="{{ '/volunteers.html' | relative_url }}">Volunteers</a>
+        <a href="{{ '/coc.html' | relative_url }}">COC</a>
+        <a href="{{ site.data.event.cfp }}">Submit a talk</a>
+        <a class="button" href="{{ site.data.event.rsvp }}">RSVP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <span>Hosted by <strong>BangPypers</strong> · Bangalore Python User Group</span>
+      <div class="footer-links">
+        <a href="{{ '/coc.html' | relative_url }}">Code of Conduct</a>
+        <a href="https://bangalore.pythonindia.org/">Website</a>
+        <a href="https://www.linkedin.com/company/bangpypers">LinkedIn</a>
+        <a href="https://x.com/__bangpypers__">X</a>
+        <a href="https://discord.gg/YkvsBBEZgt">Discord</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
