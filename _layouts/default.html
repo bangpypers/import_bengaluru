@@ -152,6 +152,22 @@
       html { scroll-behavior: auto; }
       .button { transition: none; }
     }
+
+    #venue-partner {padding: 2rem 0; background: var(--yellow);}
+    .venue-grid {display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center;}
+    .venue-content h2 {margin: 0.5rem 0 1.5rem; font-size: clamp(2.5rem, 5vw, 4.5rem);}
+    .venue-description {max-width: 42rem; font-size: 1.1rem; line-height: 1.7; opacity: 0.75;}
+    .venue-logo {display: flex; align-items: center; justify-content: center; min-height: 320px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px;}
+    .venue-logo img {width: 100%; max-width: 900px; height: auto; object-fit: contain;}
+    .venue-details {display: flex; gap: 3rem; margin-top: 2.5rem;}
+    .venue-detail {display: flex; flex-direction: column; gap: 0.4rem;}
+    .venue-label {font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.55;}
+
+    @media (max-width: 768px) {
+      .venue-grid {grid-template-columns: 1fr; gap: 3rem;}
+      .venue-details {flex-direction: column; gap: 1.5rem;}
+      .venue-logo {min-height: 220px; padding: 2rem;}
+    }
   </style>
 </head>
 <body>
@@ -193,6 +209,51 @@
       </div>
     </section>
 
+    <section id="venue-partner">
+      <div class="wrap venue-grid">
+        <div class="venue-content">
+          <p class="eyebrow">Venue Partner</p>
+          <h2>InMobi | Glance</h2>
+    
+          <p class="venue-description">
+            We're excited to host the community at InMobi's Bengaluru office.
+            Join developers, engineers, researchers and open-source enthusiasts
+            for a day of learning, collaboration and community.
+          </p>
+    
+          <div class="venue-details">
+            <div class="venue-detail">
+              <span class="venue-label">Location</span>
+              <span style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                >
+                <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <strong><a href="https://www.google.com/maps/search/?api=1&query=InMobi%20Technology%20Services%20Pvt%20Ltd&query_place_id=ChIJXeEdM6wTrjsRe-z60lPHTbM">InMobi Techonology, Bengaluru</a></strong>
+            </span>
+            </div>
+          </div>
+        </div>
+    
+        <div class="venue-logo">
+          <img
+            src="{{ '/assets/logos/inMobi_Glance_Color.png' | relative_url }}"
+            alt="InMobi and Glance"
+          >
+        </div>
+    
+      </div>
+    </section>
     <section class="about" id="about">
       <div class="wrap about-grid">
         <div>
@@ -272,7 +333,7 @@
     <div class="wrap footer-grid">
       <span>Hosted by <strong>BangPypers</strong> · Bangalore Python User Group</span>
       <div class="footer-links">
-        <a href="https://bangalore.pythonindia.org/">Code of Conduct</a>
+        <a href="{{ '/coc.html' | relative_url }}">Code of Conduct</a>
         <a href="https://bangalore.pythonindia.org/">Website</a>
         <a href="https://www.linkedin.com/company/bangpypers">LinkedIn</a>
         <a href="https://x.com/__bangpypers__">X</a>
