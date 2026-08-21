@@ -159,13 +159,10 @@
     .venue-description {max-width: 42rem; font-size: 1.1rem; line-height: 1.7; opacity: 0.75;}
     .venue-logo {display: flex; align-items: center; justify-content: center; min-height: 320px; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 24px;}
     .venue-logo img {width: 100%; max-width: 900px; height: auto; object-fit: contain;}
-    .venue-details {display: flex; gap: 3rem; margin-top: 2.5rem;}
-    .venue-detail {display: flex; flex-direction: column; gap: 0.4rem;}
-    .venue-label {font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.55;}
+    .venue-map {grid-column: 1 / -1; width: 100%; height: 450px; border: 0; border-radius: 24px;}
 
     @media (max-width: 768px) {
       .venue-grid {grid-template-columns: 1fr; gap: 3rem;}
-      .venue-details {flex-direction: column; gap: 1.5rem;}
       .venue-logo {min-height: 220px; padding: 2rem;}
     }
   </style>
@@ -220,38 +217,17 @@
             Join developers, engineers, researchers and open-source enthusiasts
             for a day of learning, collaboration and community.
           </p>
-    
-          <div class="venue-details">
-            <div class="venue-detail">
-              <span class="venue-label">Location</span>
-              <span style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                >
-                <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <strong><a href="https://www.google.com/maps/search/?api=1&query=InMobi%20Technology%20Services%20Pvt%20Ltd&query_place_id=ChIJXeEdM6wTrjsRe-z60lPHTbM">InMobi Techonology, Bengaluru</a></strong>
-            </span>
-            </div>
-          </div>
         </div>
     
         <div class="venue-logo">
           <img
-            src="{{ '/assets/logos/inMobi_Glance_Color.png' | relative_url }}"
+            src="{{ '/Assets/logos/InMobi_Glance_Color.png' | relative_url }}"
             alt="InMobi and Glance"
           >
         </div>
-    
+
+        <iframe class="venue-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.573096790497!2d77.6917182750758!3d12.935136887376892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13ac331de15d%3A0xb34dc753d2faec7b!2sInMobi%20Technology%20Services%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1787329094966!5m2!1sen!2sin" title="Map showing InMobi Technology Services in Bengaluru" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
       </div>
     </section>
     <section class="about" id="about">
