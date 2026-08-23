@@ -1,1 +1,5 @@
-message: We're looking for organisations that can support the venue, food and attendee experience while respecting the community-led spirit of the event.
+- name: SerpApi
+  tier: Gold
+  message: Thank you to SerpApi for supporting import_ bengaluru and Bengaluru's Python community.
+  image: /Assets/logos/serpapi.png
+  url: https://serpapi.com/
