@@ -80,7 +80,10 @@
     h1 { margin-bottom: 1.25rem; font: 800 clamp(4rem, 10vw, 8rem)/.78 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: -.09em; }
     h1 span { display: block; color: var(--orange); font-family: Georgia, serif; font-weight: 700; letter-spacing: -.07em; }
     .hero-copy { max-width: 650px; color: var(--muted); font-size: clamp(1.1rem, 2.3vw, 1.35rem); }
+    .hero-title { width: fit-content; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0; }
+    .hero-sponsor { display: flex; width: max-content; align-items: center; gap: .5rem; margin: 0 0 1.25rem auto; color: var(--navy); font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+    .hero-sponsor img { width: 7rem; }
     .facts { display: flex; flex-wrap: wrap; gap: .7rem; padding: 0; list-style: none; }
     .facts li { padding: .5rem .8rem; border: 1px solid rgb(8 43 98 / 16%); border-radius: 999px; color: var(--navy); background: var(--paper); font-size: .9rem; font-weight: 750; }
     .poster { width: 100%; height: auto; object-fit: contain; overflow: hidden; border: 1px solid rgb(8 43 98 / 12%); border-radius: var(--radius); box-shadow: var(--shadow); transform: rotate(1.5deg); }
@@ -121,6 +124,7 @@
     .sponsor-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius); background: var(--yellow); box-shadow: var(--shadow); }
     .sponsor-box h2 { margin-bottom: .5rem; }
     .sponsor-box p { max-width: 690px; margin-bottom: 0; color: #563900; }
+    .sponsor-link { color: var(--blue); font-weight: 800; }
 
     .cta { text-align: center; }
     .cta-card { padding: clamp(3rem, 8vw, 6rem) 1.5rem; border-radius: var(--radius); background: var(--navy); color: white; }
@@ -188,8 +192,15 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
+          {% assign gold_sponsor = site.data.sponsors | where: "tier", "Gold" | first %}
           <p class="eyebrow">{{ site.data.event.presenter }} presents · {{ site.data.event.with }}</p>
-          <h1>import_<span>bengaluru</span></h1>
+          <div class="hero-title">
+            <h1>import_<span>bengaluru</span></h1>
+            <a class="hero-sponsor" href="{{ gold_sponsor.url }}">
+              <span>Gold sponsored by</span>
+              <img src="{{ gold_sponsor.image | relative_url }}" alt="{{ gold_sponsor.name }}">
+            </a>
+          </div>
           <p class="hero-copy">{{ site.data.event.intro }}</p>
           <div class="hero-actions">
             <a class="button" href="{{ site.data.event.rsvp }}">Reserve your spot →</a>
@@ -285,14 +296,16 @@
     </section>
 
     <section id="sponsors">
+      {% for sponsor in site.data.sponsors %}
       <div class="wrap sponsor-box">
         <div>
-          <p class="eyebrow">Sponsors</p>
-          <h2>Help Bengaluru's Python communities meet.</h2>
-          <p>{{ site.data.sponsors.message }}</p>
+          <p class="eyebrow">{{ sponsor.tier }} Sponsor</p>
+          <h2>{{ sponsor.name }}</h2>
+          <p>{{ sponsor.message }}</p>
         </div>
-        <a class="button secondary" href="mailto:{{ site.data.event.contact_email }}?subject=Supporting%20import_%20bengaluru">Talk to the organisers</a>
+        <a class="sponsor-link" href="{{ sponsor.url }}">Visit {{ sponsor.name }} →</a>
       </div>
+      {% endfor %}
     </section>
 
     <section class="cta">
