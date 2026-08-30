@@ -37,3 +37,10 @@
   image: /Assets/logos/pytorch-in.png
   logo_background: "#ffffff"
   url: https://www.meetup.com/pytorch-bengaluru/
+
+- name: MongoDB User Group Bengaluru
+  role: Community partner
+  description: A community for MongoDB users, developers and data practitioners to learn, share and connect.
+  image: /Assets/mug-db-logo.jpeg
+  logo_background: "#000000"
+  url: https://www.meetup.com/mongodb-user-groups-bengaluru/

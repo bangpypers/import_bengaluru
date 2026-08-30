@@ -20,8 +20,9 @@ coc:
     - If you are being harassed, notice that someone else is being harassed, or have any other concerns, please act to intercede or ask for help from any member of the BangPypers, IRC chat admins, website admins, or organizers/representatives of any physical events put on under the auspices of the BangPypers.
     - This Code of Conduct has been adapted from PythonPune and Plone Foundation and is licensed under a Creative Commons Attribution-Share Alike 3.0 Unported license
 volunteers:
-  - name: Indivar 
+  - name: Indivar Mishra
     github_username: indiVar0508
+    image: /Assets/indivar.jpeg
     twitter_username: indimishra08
     linkedin_username: indivar-mishra
   - name: Jayita Bhattacharya
@@ -32,19 +33,20 @@ volunteers:
     github_username: ramgopalsiddh
     twitter_username: ramgopalsiddh1
     linkedin_username: ramgopalsiddh
-  - name: Tiyasha Banerjee
-    github_username: tiyashabanerjee46
-    twitter_username: TBanerrjee
-    linkedin_username: tiyasha-banerjee-06
   - name: Nischal Jain 
     github_username: Nis-chal-Jain
     twitter_username: nischaljain06
     linkedin_username: nischaljain1
+  - name: Iliyas Shirol
+    github_username: iliyas-shirol
+    image: /Assets/illiyas.jpeg
+    twitter_username: iliyasshirol
+    linkedin_username: iliyasshirol
   - name: Arjun Suresh
     github_username: eaarjun
     twitter_username: /
     linkedin_username: eaarjun
-  - name: Iliyas Shirol
-    github_username: iliyas-shirol
-    twitter_username: iliyasshirol
-    linkedin_username: iliyasshirol
+  - name: Tiyasha Banerjee
+    github_username: tiyashabanerjee46
+    twitter_username: TBanerrjee
+    linkedin_username: tiyasha-banerjee-06
