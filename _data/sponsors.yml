@@ -3,3 +3,9 @@
   message: Thank you to SerpApi for supporting import_ bengaluru and Bengaluru's Python community.
   image: /Assets/logos/serpapi.png
   url: https://serpapi.com/
+
+- name: MongoDB
+  tier: Silver
+  message: Thank you to MongoDB for supporting import_ bengaluru and Bengaluru's Python community.
+  image: /Assets/mongo-db.png
+  url: https://www.mongodb.com/
