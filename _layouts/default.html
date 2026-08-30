@@ -124,7 +124,13 @@
     .sponsor-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius); background: var(--yellow); box-shadow: var(--shadow); }
     .sponsor-box h2 { margin-bottom: .5rem; }
     .sponsor-box p { max-width: 690px; margin-bottom: 0; color: #563900; }
-    .sponsor-link { color: var(--blue); font-weight: 800; }
+    .sponsor-link { display: grid; justify-items: center; gap: .75rem; color: var(--blue); font-weight: 800; }
+    .sponsor-link img { width: min(14rem, 100%); max-height: 5rem; object-fit: contain; }
+    .sponsor-box--silver { width: min(1040px, calc(100% - 2rem)); padding: clamp(1.5rem, 4vw, 3rem); background: #e3e6e8; box-shadow: 0 10px 32px rgb(8 43 98 / 7%); }
+    .sponsor-box--silver .eyebrow { color: #59636d; }
+    .sponsor-box--silver h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+    .sponsor-box--silver p { color: #465768; }
+    .sponsor-box--silver .sponsor-link img { width: min(12rem, 100%); max-height: 4rem; }
 
     .cta { text-align: center; }
     .cta-card { padding: clamp(3rem, 8vw, 6rem) 1.5rem; border-radius: var(--radius); background: var(--navy); color: white; }
@@ -297,13 +303,13 @@
 
     <section id="sponsors">
       {% for sponsor in site.data.sponsors %}
-      <div class="wrap sponsor-box">
+      <div class="wrap sponsor-box sponsor-box--{{ sponsor.tier | downcase }}">
         <div>
           <p class="eyebrow">{{ sponsor.tier }} Sponsor</p>
           <h2>{{ sponsor.name }}</h2>
           <p>{{ sponsor.message }}</p>
         </div>
-        <a class="sponsor-link" href="{{ sponsor.url }}">Visit {{ sponsor.name }} →</a>
+        <a class="sponsor-link" href="{{ sponsor.url }}"><img src="{{ sponsor.image | relative_url }}" alt="{{ sponsor.name }} logo">Visit {{ sponsor.name }} →</a>
       </div>
       {% endfor %}
     </section>
