@@ -1,7 +1,7 @@
 # Run after `bundle exec jekyll build`.
 require "yaml"
 
-html = File.read("_site/index.html")
+html = File.read("_site/index.html", encoding: "UTF-8")
 event = YAML.load_file("_data/event.yml")
 partners = YAML.load_file("_data/partners.yml")
 sponsors = YAML.load_file("_data/sponsors.yml")
