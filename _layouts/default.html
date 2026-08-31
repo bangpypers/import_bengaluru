@@ -59,17 +59,19 @@
 
     header {
       position: sticky;
-      z-index: 10;
+      z-index: 100;
       top: 0;
       border-bottom: 1px solid rgb(8 43 98 / 10%);
-      background: rgb(255 250 241 / 92%);
+      background: rgb(255 250 241 / 95%);
       backdrop-filter: blur(14px);
     }
     .nav { min-height: 4.7rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .brand { color: var(--navy); font-size: 1.2rem; font-weight: 900; text-decoration: none; letter-spacing: -.04em; }
     .brand span { color: var(--orange); }
+    .nav-controls { display: none; align-items: center; gap: .75rem; }
     nav { display: flex; align-items: center; gap: clamp(.75rem, 2vw, 1.5rem); }
     nav a { color: var(--navy); font-size: .92rem; font-weight: 700; text-decoration: none; }
+    nav a:hover { color: var(--blue); }
     nav .button { min-height: 2.6rem; padding: .5rem 1rem; color: white; }
 
     .hero { position: relative; overflow: hidden; padding: clamp(4rem, 8vw, 8rem) 0 5rem; }
@@ -118,19 +120,24 @@
     .slot { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid #cbd8e3; }
     .slot time { color: var(--orange); font-weight: 850; }
     .slot h3 { margin-bottom: .25rem; }
-    .slot p { margin-bottom: 0; color: var(--muted); }
+    .slot p { margin-top: .35rem; margin-bottom: 0; color: var(--muted); font-size: 1.1rem; line-height: 1.5; }
+    .slot a { color: var(--blue); font-weight: 800; text-decoration: none; }
+    .slot a:hover { text-decoration: underline; }
     .tag { display: inline-block; padding: .25rem .65rem; border-radius: 999px; background: #e4edf5; color: var(--navy); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
 
+    #sponsors { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
     .sponsor-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--radius); background: var(--yellow); box-shadow: var(--shadow); }
+    .sponsor-box + .sponsor-box { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
     .sponsor-box h2 { margin-bottom: .5rem; }
     .sponsor-box p { max-width: 690px; margin-bottom: 0; color: #563900; }
-    .sponsor-link { display: grid; justify-items: center; gap: .75rem; color: var(--blue); font-weight: 800; }
-    .sponsor-link img { width: min(14rem, 100%); max-height: 5rem; object-fit: contain; }
+    .sponsor-link { display: grid; justify-items: center; gap: .75rem; color: var(--blue); font-weight: 800; width: 14rem; max-width: 100%; text-decoration: none; }
+    .sponsor-link img { width: 100%; height: auto; max-height: 5rem; object-fit: contain; }
     .sponsor-box--silver { width: min(1040px, calc(100% - 2rem)); padding: clamp(1.5rem, 4vw, 3rem); background: #e3e6e8; box-shadow: 0 10px 32px rgb(8 43 98 / 7%); }
     .sponsor-box--silver .eyebrow { color: #59636d; }
     .sponsor-box--silver h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
     .sponsor-box--silver p { color: #465768; }
-    .sponsor-box--silver .sponsor-link img { width: min(12rem, 100%); max-height: 4rem; }
+    .sponsor-box--silver .sponsor-link { width: 12rem; }
+    .sponsor-box--silver .sponsor-link img { width: 100%; height: auto; max-height: 4rem; object-fit: contain; }
 
     .cta { text-align: center; }
     .cta-card { padding: clamp(3rem, 8vw, 6rem) 1.5rem; border-radius: var(--radius); background: var(--navy); color: white; }
@@ -143,7 +150,68 @@
     .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
 
     @media (max-width: 800px) {
-      nav > a:not(.button) { display: none; }
+      .nav {
+        min-height: 4.2rem;
+        flex-wrap: wrap;
+      }
+      .nav-controls {
+        display: flex;
+      }
+      .mobile-rsvp {
+        min-height: 2.3rem;
+        padding: .4rem .9rem;
+        font-size: .85rem;
+      }
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.6rem;
+        height: 2.6rem;
+        border: 2px solid rgb(8 43 98 / 20%);
+        border-radius: .6rem;
+        background: transparent;
+        color: var(--navy);
+        cursor: pointer;
+        padding: 0;
+        transition: background .2s, border-color .2s;
+      }
+      .nav-toggle:hover {
+        background: rgb(8 43 98 / 6%);
+        border-color: var(--navy);
+      }
+      .nav-toggle:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 2px;
+      }
+      .nav-toggle .icon-close { display: none; }
+      .nav-toggle .icon-menu { display: block; }
+      .nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+      .nav-toggle[aria-expanded="true"] .icon-menu { display: none; }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: .5rem 0 1.25rem;
+        border-top: 1px solid rgb(8 43 98 / 10%);
+      }
+      nav.is-open {
+        display: flex;
+      }
+      nav a {
+        display: block;
+        padding: .75rem .25rem;
+        border-bottom: 1px solid rgb(8 43 98 / 8%);
+        font-size: 1.05rem;
+        font-weight: 750;
+      }
+      nav .nav-rsvp {
+        display: none;
+      }
+
       .hero-grid, .about-grid, .sponsor-box { grid-template-columns: 1fr; }
       .poster { width: calc(100% - 1rem); max-width: 600px; margin-inline: auto; transform: none; }
       .partner-card { grid-template-columns: 1fr; min-height: 0; }
@@ -181,7 +249,14 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="import bengaluru home">import_<span>bengaluru</span></a>
-      <nav aria-label="Main navigation">
+      <div class="nav-controls">
+        <a class="button mobile-rsvp" href="{{ site.data.event.rsvp }}">RSVP</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <nav id="main-nav" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#communities">Communities</a>
         <a href="#agenda">Agenda</a>
@@ -189,7 +264,7 @@
         <a href="{{ '/volunteers.html' | relative_url }}">Volunteers</a>
         <a href="{{ '/coc.html' | relative_url }}">COC</a>
         <a href="{{ site.data.event.cfp }}">Submit a talk</a>
-        <a class="button" href="{{ site.data.event.rsvp }}">RSVP</a>
+        <a class="button nav-rsvp" href="{{ site.data.event.rsvp }}">RSVP</a>
       </nav>
     </div>
   </header>
@@ -365,6 +440,22 @@
     carousel.addEventListener('focusin', () => clearInterval(timer));
     carousel.addEventListener('focusout', startCarousel);
     startCarousel();
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.classList.toggle('is-open', !isExpanded);
+      });
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.setAttribute('aria-expanded', 'false');
+          mainNav.classList.remove('is-open');
+        });
+      });
+    }
   </script>
 </body>
 </html>
