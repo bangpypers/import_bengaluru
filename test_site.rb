@@ -6,6 +6,7 @@ event = YAML.load_file("_data/event.yml")
 partners = YAML.load_file("_data/partners.yml")
 sponsors = YAML.load_file("_data/sponsors.yml")
 agenda = YAML.load_file("_data/agenda.yml")
+jobs = YAML.load_file("_data/jobs.yml")
 
 raise "missing partner slides" unless html.scan("data-partner-slide>").size == partners.size
 raise "missing BangPypers link" unless html.include?("https://bangalore.pythonindia.org/")
@@ -28,5 +29,11 @@ agenda.flat_map { |item| item.fetch("speakers", []) }.each do |speaker|
   raise "missing speaker image: #{speaker.fetch("image")}" unless File.file?(speaker.fetch("image").delete_prefix("/"))
 end
 raise "missing talk details" unless html.scan('<details class="talk-details">').size == agenda.count { |item| item["details"] }
+raise "missing jobs section" unless html.include?('id="jobs"')
+jobs.each do |job|
+  %w[company position description link].each { |field| job.fetch(field) }
+  raise "missing job" unless html.include?(job.fetch("company")) && html.include?(job.fetch("link"))
+  raise "missing job poster" if job["poster"] && !File.file?(job["poster"].delete_prefix("/"))
+end
 
 puts "Site checks passed"
