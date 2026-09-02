@@ -123,6 +123,13 @@
     .slot p { margin-top: .35rem; margin-bottom: 0; color: var(--muted); font-size: 1.1rem; line-height: 1.5; }
     .slot a { color: var(--blue); font-weight: 800; text-decoration: none; }
     .slot a:hover { text-decoration: underline; }
+    .talk-heading { display: flex; align-items: start; justify-content: space-between; gap: 1.5rem; }
+    .speakers { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: .75rem; }
+    .speaker { display: flex; align-items: center; gap: .6rem; }
+    .speaker img { width: 3rem; height: 3rem; border-radius: 50%; object-fit: cover; }
+    .talk-details { margin-top: 1rem; }
+    .talk-details summary { width: fit-content; color: var(--blue); cursor: pointer; font-weight: 800; }
+    .talk-details[open] summary { margin-bottom: .5rem; }
     .tag { display: inline-block; padding: .25rem .65rem; border-radius: 999px; background: #e4edf5; color: var(--navy); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
 
     #sponsors { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
@@ -218,6 +225,8 @@
       .partner-card img { aspect-ratio: 16 / 10; padding: 2.5rem; }
       .section-head { display: block; }
       .slot { grid-template-columns: 1fr; gap: .25rem; }
+      .talk-heading { display: block; }
+      .speakers { margin-top: 1rem; }
       .sponsor-box .button { justify-self: start; }
       .footer-grid { align-items: start; flex-direction: column; }
     }
@@ -367,10 +376,10 @@
       <div class="wrap">
         <p class="eyebrow">Agenda</p>
         <h2>A full day across<br>the Python landscape.</h2>
-        <p class="lead">Speaker and session details are being finalised. Here is the shape of the day; check back as community sessions are announced.</p>
+        <p class="lead">Meet the speakers and explore what each session will cover.</p>
         <div class="timeline">
           {% for item in site.data.agenda %}
-          <div class="slot"><time>{{ item.time }}</time><div>{% if item.tba %}<span class="tag">To be announced</span>{% endif %}<h3>{{ item.title }}</h3><p>{{ item.description }}</p></div></div>
+          <div class="slot"><time>{{ item.time }}</time><div><div class="talk-heading"><div>{% if item.tba %}<span class="tag">To be announced</span>{% endif %}<h3>{{ item.title }}</h3>{% if item.organization %}<p>{{ item.organization }}</p>{% endif %}</div>{% if item.speakers %}<div class="speakers">{% for speaker in item.speakers %}{% if speaker.url %}<a class="speaker" href="{{ speaker.url }}" target="_blank" rel="noopener noreferrer">{% else %}<span class="speaker">{% endif %}<img src="{{ speaker.image | relative_url }}" alt="" loading="lazy"><span>{{ speaker.name }}</span>{% if speaker.url %}</a>{% else %}</span>{% endif %}{% endfor %}</div>{% endif %}</div>{% if item.details %}<details class="talk-details"><summary>Talk details</summary><p>{{ item.details }}</p></details>{% elsif item.description %}<p>{{ item.description }}</p>{% endif %}</div></div>
           {% endfor %}
         </div>
       </div>

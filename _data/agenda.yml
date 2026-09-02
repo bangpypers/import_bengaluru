@@ -6,45 +6,126 @@
 
 - time: 11:00–11:30 AM
   title: How NumPy divides integers really fast (and the bugs I caused doing it)
-  description: '<a href="https://www.linkedin.com/in/ganesh-kathiresan/" target="_blank" rel="noopener noreferrer">Ganesh Kathiresan</a> | <a href="https://www.linkedin.com/company/pydata-bangalore/" target="_blank" rel="noopener noreferrer">PyData Bangalore</a>'
+  organization: PyData Bangalore
+  speakers:
+    - name: Ganesh Kathiresan
+      url: https://www.linkedin.com/in/ganesh-kathiresan/
+      image: /Assets/speakers/ganesh.jpeg
+  details: >-
+    Every AI framework, dataframe library and scientific tool in Python eventually
+    bottoms out in NumPy, yet integer division is one of the most expensive things
+    a CPU can do. Follow a multi-year contribution journey from replacing division
+    by a constant with multiplication and shifts, through portable SIMD on Intel,
+    AMD and ARM, to edge cases such as INT_MIN // -1. The session also covers a
+    regression shipped to millions of users and what benchmarks, review and fixing
+    it revealed about real open-source performance work.
   tba: false
 
 - time: 11:30 AM–12:00 PM
   title: Point Blank and Writing GPU Kernels in Pure Python
-  description: '<a href="https://www.linkedin.com/in/shubhangsinha/" target="_blank" rel="noopener noreferrer">Shubhang Sinha</a> and <a href="https://www.linkedin.com/in/gigikoneti/" target="_blank" rel="noopener noreferrer">GiGi Koneti</a> | <a href="https://www.linkedin.com/company/pointblank-club/" target="_blank" rel="noopener noreferrer">Point Blank</a>'
+  organization: Point Blank
+  speakers:
+    - name: Shubhang Sinha
+      url: https://www.linkedin.com/in/shubhangsinha/
+      image: /Assets/speakers/shubhang.jpeg
+    - name: GiGi Koneti
+      url: https://www.linkedin.com/in/gigikoneti/
+      image: /Assets/speakers/GiGi.jpeg
+  details: >-
+    Learn how Point Blank became what it is today, then see how Triton makes it
+    possible to write fast, low-level GPU kernels in pure Python instead of
+    dropping into C++ and CUDA.
   tba: false
 
 - time: 12:00–12:30 PM
   title: Building Smarter AI Agents with Real-Time Search
-  description: '<a href="https://www.linkedin.com/in/adarsh-d/" target="_blank" rel="noopener noreferrer">Adarsh Divakaran</a> | <a href="http://serpapi.com/" target="_blank" rel="noopener noreferrer">SerpAPI</a>'
+  organization: SerpAPI
+  speakers:
+    - name: Adarsh Divakaran
+      url: https://www.linkedin.com/in/adarsh-d/
+      image: /Assets/speakers/Adarsh.jpeg
+  details: >-
+    LLM knowledge alone is not enough for many real-world tasks. Using practical
+    Python and SerpApi examples, this session shows how tools, MCP and reusable
+    skills let agents search the web, retrieve current information and solve tasks
+    beyond what an LLM can do on its own.
   tba: false
 
-- time: 12:30–1:30 PM
+- time: 12:30–1:00 PM
+  title: Don't Migrate Your DAGs. Compile Them.
+  organization: What Python's ast module taught us about platform adoption
+  speakers:
+    - name: Purushotham Pushpavanthar
+      url: https://www.linkedin.com/in/purushotham-pushpavanthar/
+      image: /Assets/speakers/purushotham.jpeg
+  details: >-
+    Building the abstraction was the easy part. We designed an Offline Job
+    Orchestration Platform—a thin layer over Airflow where a DAG declares intent
+    (data, application and runtime) instead of hand-wiring paths, SparkConf and
+    Kubernetes manifests—and it worked almost immediately. Then it sat there. More
+    than 600 existing DAGs stayed where they were because migrating meant each team
+    rewriting its own code on our schedule instead of theirs. Adoption is a cost
+    problem, not a persuasion problem, so we stopped writing migration guides and
+    shipped the migration itself. A transpiler built on Python's standard-library
+    ast module rewrites legacy DAGs onto the new abstraction, while a triage
+    classifier identifies which DAGs are automatable and which functions the tool
+    should learn next. You'll learn to write your own codemod, what ast gives you
+    for free, where it breaks and why the differ mattered more than the generator.
+    Takeaways: every user step is an adoption tax; trust is the bottleneck, so ship
+    the diff that proves nothing changed; and rejected DAGs are a design review of
+    your abstraction. A platform nobody has migrated to is only a proposal.
+  tba: false
+
+- time: 1:00–2:00 PM
   title: Break
   description: Lunch and community connections.
   tba: false
 
-- time: 1:30–2:00 PM
-  title: PyTorch Foundations and deep dive into Executorch
-  description: '<a href="https://www.linkedin.com/in/arkadip-maitra/" target="_blank" rel="noopener noreferrer">Arkadip Maitra</a> | <a href="https://www.linkedin.com/company/pytorch/" target="_blank" rel="noopener noreferrer">PyTorch</a>'
-  tba: false
-
 - time: 2:00–2:30 PM
-  title: Building Rag Application with MongoDB Vector Search & Python
-  description: '<a href="https://www.linkedin.com/in/pranav-kumar-verma/" target="_blank" rel="noopener noreferrer">Pranav Kumar</a> | <a href="https://www.linkedin.com/company/mug-blr" target="_blank" rel="noopener noreferrer">Namma MUG</a>'
+  title: PyTorch Foundations and deep dive into Executorch
+  organization: PyTorch
+  speakers:
+    - name: Arkadip Maitra
+      url: https://www.linkedin.com/in/arkadip-maitra/
+      image: /Assets/speakers/arkadip.jpeg
+  details: >-
+    Start with the core ideas behind PyTorch, then explore ExecuTorch and how
+    PyTorch models move from development to efficient inference on mobile and
+    edge devices.
   tba: false
 
 - time: 2:30–3:00 PM
-  title: WTF AI Agent Harness? Let's build a Baby Codex
-  description: '<a href="https://www.linkedin.com/in/amrrs/" target="_blank" rel="noopener noreferrer">AbdulMajed Raja</a> | <a href="https://www.linkedin.com/company/bangpypers/" target="_blank" rel="noopener noreferrer">Bangpypers</a>'
+  title: Building RAG Applications with MongoDB Vector Search & Python
+  organization: Namma MUG
+  speakers:
+    - name: Pranav Kumar
+      url: https://www.linkedin.com/in/pranav-kumar-verma/
+      image: /Assets/speakers/pranav.jpeg
+  details: >-
+    Build a retrieval-augmented generation application in Python and learn how
+    MongoDB Vector Search stores embeddings, retrieves relevant context and grounds
+    an LLM's answers in your own data.
   tba: false
 
-- time: 3:00–4:00 PM
+- time: 3:00–3:30 PM
+  title: WTF AI Agent Harness? Let's build a Baby Codex
+  organization: BangPypers
+  speakers:
+    - name: AbdulMajed Raja
+      url: https://www.linkedin.com/in/amrrs/
+      image: /Assets/speakers/abdulraja.jpeg
+  details: >-
+    A demo-led build of a minimal AI agent harness from the ground up. Unpack the
+    agent loop, tool calling, context management and memory, then combine them into
+    a working harness that clarifies how tools such as Claude Code and Codex work.
+  tba: false
+
+- time: 3:30–4:30 PM
   title: Unconference / Lightning talks
   description: Participant-led conversations and short community talks.
   tba: false
 
-- time: 4:00–5:00 PM
+- time: 4:30–5:30 PM
   title: Closing notes & networking
   description: Wrap up the day, share takeaways and make final connections.
   tba: false

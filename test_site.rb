@@ -5,6 +5,7 @@ html = File.read("_site/index.html", encoding: "UTF-8")
 event = YAML.load_file("_data/event.yml")
 partners = YAML.load_file("_data/partners.yml")
 sponsors = YAML.load_file("_data/sponsors.yml")
+agenda = YAML.load_file("_data/agenda.yml")
 
 raise "missing partner slides" unless html.scan("data-partner-slide>").size == partners.size
 raise "missing BangPypers link" unless html.include?("https://bangalore.pythonindia.org/")
@@ -22,5 +23,10 @@ raise "carousel interval changed" unless html.include?("5000")
 ([event.fetch("hero_image")] + partners.map { |partner| partner.fetch("image") }).each do |image|
   raise "missing image: #{image}" unless File.file?(image.delete_prefix("/"))
 end
+agenda.flat_map { |item| item.fetch("speakers", []) }.each do |speaker|
+  raise "missing speaker: #{speaker.fetch("name")}" unless html.include?(speaker.fetch("name"))
+  raise "missing speaker image: #{speaker.fetch("image")}" unless File.file?(speaker.fetch("image").delete_prefix("/"))
+end
+raise "missing talk details" unless html.scan('<details class="talk-details">').size == agenda.count { |item| item["details"] }
 
 puts "Site checks passed"
