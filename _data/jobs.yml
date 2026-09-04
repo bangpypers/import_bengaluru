@@ -1,1 +1,29 @@
-[]
+- company: SerpApi
+  position: Junior Fullstack Engineer
+  description: Design, ship and support search APIs using Ruby, Rails, MongoDB and JavaScript in a remote-first, worldwide team.
+  link: https://serpapi.com/careers/junior-fullstack-engineer
+
+- company: SerpApi
+  position: Developer Advocate
+  description: Connect SerpApi with developer communities through technical content, documentation, events and partnerships. Remote worldwide; Python and JavaScript required.
+  link: https://serpapi.com/careers/developer-advocate
+
+- company: EPAM
+  position: Solution Architect — Python with GenAI
+  description: Design production-grade GenAI, RAG and agentic systems for enterprise clients. Bangalore and other India offices; 9–14 years of experience.
+  link: https://jobs.welcome.epam.in/vacancy/solution-architect-python-with-genai-bltxzmxhkhz8p46r87x
+
+- company: EPAM
+  position: Lead/Senior Domino Data Lab Engineer with Python
+  description: Build scalable data science applications and production ML solutions on Domino Data Lab. Bangalore and other India offices; 5–14 years of experience.
+  link: https://jobs.welcome.epam.in/vacancy/lead-senior-domino-data-lab-with-python-bltdriz2lbul7ou0666
+
+- company: EPAM
+  position: Lead Software Engineer — Python, GenAI and LLM
+  description: Build production GenAI applications, RAG architectures and multi-agent workflows. Bangalore and other India offices; 7–12 years of experience.
+  link: https://jobs.welcome.epam.in/vacancy/lead-software-engineer-python-genai-llm-bltb2d0aeb0029cb99c
+
+- company: EPAM
+  position: Lead Software Engineer — Python
+  description: Lead development of scalable Python systems using PostgreSQL, MS SQL Server, React and GitHub Actions. Bangalore and other India offices; 7–12 years of experience.
+  link: https://jobs.welcome.epam.in/vacancy/lead-software-engineer-python-bltc8rke4o6ovda7oxg
